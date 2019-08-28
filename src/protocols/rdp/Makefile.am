@@ -154,6 +154,8 @@ libguac_client_rdp_la_CFLAGS = \
 
 libguac_client_rdp_la_LDFLAGS = \
     -version-info 0:0:0         \
+    -shared                     \
+    -no-undefined                \
     @CAIRO_LIBS@                \
     @PTHREAD_LIBS@              \
     @RDP_LIBS@                  \
