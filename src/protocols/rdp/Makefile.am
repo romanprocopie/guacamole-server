@@ -64,7 +64,8 @@ guacai_sources =          \
     audio_input.c         \
     guac_ai/ai_messages.c \
     guac_ai/ai_service.c  \
-    ptr_string.c
+    ptr_string.c \
+    dvc.c
 
 guacsvc_sources =          \
     guac_svc/svc_service.c \
