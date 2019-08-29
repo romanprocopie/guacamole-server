@@ -579,29 +579,30 @@ void guac_rdp_fs_close(guac_rdp_fs* fs, int file_id) {
 
 const char* guac_rdp_fs_read_dir(guac_rdp_fs* fs, int file_id) {
 
-    guac_rdp_fs_file* file;
+    // guac_rdp_fs_file* file;
 
-    struct dirent* result;
+    // struct dirent* result;
 
-    /* Only read if file ID is valid */
-    if (file_id < 0 || file_id >= GUAC_RDP_FS_MAX_FILES)
-        return NULL;
+    // /* Only read if file ID is valid */
+    // if (file_id < 0 || file_id >= GUAC_RDP_FS_MAX_FILES)
+    //     return NULL;
 
-    file = &(fs->files[file_id]);
+    // file = &(fs->files[file_id]);
 
-    /* Open directory if not yet open, stop if error */
-    if (file->dir == NULL) {
-        file->dir = fdopendir(file->fd);
-        if (file->dir == NULL)
-            return NULL;
-    }
+    // /* Open directory if not yet open, stop if error */
+    // if (file->dir == NULL) {
+    //     file->dir = fdopendir(file->fd);
+    //     if (file->dir == NULL)
+    //         return NULL;
+    // }
 
-    /* Read next entry, stop if error or no more entries */
-    if ((result = readdir(file->dir)) == NULL)
-        return NULL;
+    // /* Read next entry, stop if error or no more entries */
+    // if ((result = readdir(file->dir)) == NULL)
+    //     return NULL;
 
-    /* Return filename */
-    return result->d_name;
+    // /* Return filename */
+    // return result->d_name;
+    return NULL;
 
 }
 
@@ -709,20 +710,21 @@ guac_rdp_fs_file* guac_rdp_fs_get_file(guac_rdp_fs* fs, int file_id) {
 }
 
 int guac_rdp_fs_matches(const char* filename, const char* pattern) {
-    return fnmatch(pattern, filename, FNM_NOESCAPE) != 0;
+    //return fnmatch(pattern, filename, FNM_NOESCAPE) != 0;
+    return 0;
 }
 
 int guac_rdp_fs_get_info(guac_rdp_fs* fs, guac_rdp_fs_info* info) {
 
-    /* Read FS information */
-    struct statvfs fs_stat;
-    if (statvfs(fs->drive_path, &fs_stat))
-        return guac_rdp_fs_get_errorcode(errno);
+    // /* Read FS information */
+    // struct statvfs fs_stat;
+    // if (statvfs(fs->drive_path, &fs_stat))
+    //     return guac_rdp_fs_get_errorcode(errno);
 
-    /* Assign to structure */
-    info->blocks_available = fs_stat.f_bfree;
-    info->blocks_total = fs_stat.f_blocks;
-    info->block_size = fs_stat.f_bsize;
+    // /* Assign to structure */
+    // info->blocks_available = fs_stat.f_bfree;
+    // info->blocks_total = fs_stat.f_blocks;
+    // info->block_size = fs_stat.f_bsize;
     return 0;
 
 }
