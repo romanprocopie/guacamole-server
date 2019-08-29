@@ -87,7 +87,8 @@ guacdr_sources =                             \
     rdp_fs.c                                 \
     rdp_print_job.c                          \
     rdp_stream.c                             \
-    unicode.c
+    unicode.c \
+    rdp_svc.c
 
 noinst_HEADERS =                             \
     compat/client-cliprdr.h                  \
