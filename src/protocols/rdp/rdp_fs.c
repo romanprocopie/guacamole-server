@@ -52,7 +52,7 @@ guac_rdp_fs* guac_rdp_fs_alloc(guac_client* client, const char* drive_path,
                __func__, drive_path);
 
         /* Log error if directory creation fails */
-        if (mkdir(drive_path, S_IRWXU) && errno != EEXIST) {
+        if (mkdir(drive_path ) && errno != EEXIST) {
             guac_client_log(client, GUAC_LOG_ERROR,
                     "Unable to create directory \"%s\": %s",
                     drive_path, strerror(errno));
@@ -319,7 +319,7 @@ int guac_rdp_fs_open(guac_rdp_fs* fs, const char* path,
     if ((create_options & FILE_DIRECTORY_FILE) && (flags & O_CREAT)) {
 
         /* Create directory */
-        if (mkdir(real_path, S_IRWXU)) {
+        if (mkdir(real_path)) {
             if (errno != EEXIST || (flags & O_EXCL)) {
                 guac_client_log(fs->client, GUAC_LOG_DEBUG,
                         "%s: mkdir() failed: %s",
