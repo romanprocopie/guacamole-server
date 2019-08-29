@@ -301,79 +301,81 @@ static int guac_rdp_print_filter_ack_handler(guac_user* user,
 static pid_t guac_rdp_create_filter_process(guac_client* client,
         int* input_fd, int* output_fd) {
 
-    int child_pid;
-    int stdin_pipe[2];
-    int stdout_pipe[2];
+    // int child_pid;
+    // int stdin_pipe[2];
+    // int stdout_pipe[2];
 
-    /* Create STDIN pipe */
-    if (pipe(stdin_pipe)) {
-        guac_client_log(client, GUAC_LOG_ERROR, "Unable to create STDIN "
-                "pipe for PDF filter process: %s", strerror(errno));
-        return -1;
-    }
+    // /* Create STDIN pipe */
+    // if (pipe(stdin_pipe)) {
+    //     guac_client_log(client, GUAC_LOG_ERROR, "Unable to create STDIN "
+    //             "pipe for PDF filter process: %s", strerror(errno));
+    //     return -1;
+    // }
 
-    /* Create STDOUT pipe */
-    if (pipe(stdout_pipe)) {
-        guac_client_log(client, GUAC_LOG_ERROR, "Unable to create STDOUT "
-                "pipe for PDF filter process: %s", strerror(errno));
-        close(stdin_pipe[0]);
-        close(stdin_pipe[1]);
-        return -1;
-    }
+    // /* Create STDOUT pipe */
+    // if (pipe(stdout_pipe)) {
+    //     guac_client_log(client, GUAC_LOG_ERROR, "Unable to create STDOUT "
+    //             "pipe for PDF filter process: %s", strerror(errno));
+    //     close(stdin_pipe[0]);
+    //     close(stdin_pipe[1]);
+    //     return -1;
+    // }
 
-    /* Store parent side of stdin/stdout */
-    *input_fd = stdin_pipe[1];
-    *output_fd = stdout_pipe[0];
+    // /* Store parent side of stdin/stdout */
+    // *input_fd = stdin_pipe[1];
+    // *output_fd = stdout_pipe[0];
 
-    /* Fork child process */
-    child_pid = fork();
+    // /* Fork child process */
+    // child_pid = fork();
 
-    /* Log fork errors */
-    if (child_pid == -1) {
-        guac_client_log(client, GUAC_LOG_ERROR, "Unable to fork PDF filter "
-                "process: %s", strerror(errno));
-        close(stdin_pipe[0]);
-        close(stdin_pipe[1]);
-        close(stdout_pipe[0]);
-        close(stdout_pipe[1]);
-        return -1;
-    }
+    // /* Log fork errors */
+    // if (child_pid == -1) {
+    //     guac_client_log(client, GUAC_LOG_ERROR, "Unable to fork PDF filter "
+    //             "process: %s", strerror(errno));
+    //     close(stdin_pipe[0]);
+    //     close(stdin_pipe[1]);
+    //     close(stdout_pipe[0]);
+    //     close(stdout_pipe[1]);
+    //     return -1;
+    // }
 
-    /* Child process */
-    if (child_pid == 0) {
+    // /* Child process */
+    // if (child_pid == 0) {
 
-        /* Close unneeded ends of pipe */
-        close(stdin_pipe[1]);
-        close(stdout_pipe[0]);
+    //     /* Close unneeded ends of pipe */
+    //     close(stdin_pipe[1]);
+    //     close(stdout_pipe[0]);
 
-        /* Reassign file descriptors as STDIN/STDOUT */
-        dup2(stdin_pipe[0], STDIN_FILENO);
-        dup2(stdout_pipe[1], STDOUT_FILENO);
+    //     /* Reassign file descriptors as STDIN/STDOUT */
+    //     dup2(stdin_pipe[0], STDIN_FILENO);
+    //     dup2(stdout_pipe[1], STDOUT_FILENO);
 
-        /* Run PDF filter */
-        guac_client_log(client, GUAC_LOG_INFO, "Running %s",
-                guac_rdp_pdf_filter_command[0]);
-        if (execvp(guac_rdp_pdf_filter_command[0],
-                    guac_rdp_pdf_filter_command) < 0)
-            guac_client_log(client, GUAC_LOG_ERROR, "Unable to execute PDF "
-                    "filter command: %s", strerror(errno));
-        else
-            guac_client_log(client, GUAC_LOG_ERROR, "Unable to execute PDF "
-                    "filter command, but no error given");
+    //     /* Run PDF filter */
+    //     guac_client_log(client, GUAC_LOG_INFO, "Running %s",
+    //             guac_rdp_pdf_filter_command[0]);
+    //     if (execvp(guac_rdp_pdf_filter_command[0],
+    //                 guac_rdp_pdf_filter_command) < 0)
+    //         guac_client_log(client, GUAC_LOG_ERROR, "Unable to execute PDF "
+    //                 "filter command: %s", strerror(errno));
+    //     else
+    //         guac_client_log(client, GUAC_LOG_ERROR, "Unable to execute PDF "
+    //                 "filter command, but no error given");
 
-        /* Terminate child process */
-        exit(1);
+    //     /* Terminate child process */
+    //     exit(1);
 
-    }
+    // }
 
-    /* Log fork success */
-    guac_client_log(client, GUAC_LOG_INFO, "Created PDF filter process "
-            "PID=%i", child_pid);
+    // /* Log fork success */
+    // guac_client_log(client, GUAC_LOG_INFO, "Created PDF filter process "
+    //         "PID=%i", child_pid);
 
-    /* Close unneeded ends of pipe */
-    close(stdin_pipe[0]);
-    close(stdout_pipe[1]);
-    return child_pid;
+    // /* Close unneeded ends of pipe */
+    // close(stdin_pipe[0]);
+    // close(stdout_pipe[1]);
+    // return child_pid;
+
+    return -1;
 
 }
 
