@@ -30,10 +30,19 @@ typedef uint8   UINT8;
 typedef uint16  UINT16;
 typedef uint32  UINT32;
 typedef uint64  UINT64;
-//typedef boolean BOOL;
 
-//#define TRUE  true
-//#define FALSE false
+typedef boolean _GUACBOOL;
+#define BOOL _GUACBOOL
+
+#ifdef TRUE
+#undef TRUE
+#endif
+#define TRUE  true
+
+#ifdef FALSE
+#undef FALSE
+#endif
+#define FALSE false
 
 #endif
 
