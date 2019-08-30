@@ -1,5 +1,11 @@
 #include "setenv.h"
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+#include <string.h>
+
 int setenv(const char *name, const char *value, int overwrite)
 {
     // alloc memory for name, equal sign, value and the terinating character
