@@ -106,8 +106,9 @@ int (poll) (struct pollfd *fds, unsigned nfds, int timeout)
     return val;
 }
 #else
-# include <windows.h>
 # include <winsock2.h>
+# include <windows.h>
+
 
 static int poll_compat(struct pollfd *fds, unsigned nfds, int timeout)
 {
