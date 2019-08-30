@@ -26,6 +26,7 @@
 #include "rdp_keymap.h"
 
 #include <freerdp/freerdp.h>
+#include "setenv.h"
 
 /**
  * The maximum number of bytes in the client hostname claimed during
