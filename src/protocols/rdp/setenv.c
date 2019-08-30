@@ -1,4 +1,5 @@
 #include "setenv.h"
+#include <errno.h>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -17,5 +18,8 @@ int setenv(const char *name, const char *value, int overwrite)
         strcat(nameval,value);
         putenv(nameval);
         free(nameval);
+        return 0;
     }
+    errno = ENOMEM;
+    return -1;
 }
