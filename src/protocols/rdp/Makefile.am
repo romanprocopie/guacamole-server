@@ -132,7 +132,8 @@ noinst_HEADERS =                             \
     rdp_svc.h                                \
     resolution.h                             \
     unicode.h                                \
-    user.h
+    user.h \
+    compat/poll.h
 
 # Add compatibility layer for WinPR if not available
 if ! ENABLE_WINPR
