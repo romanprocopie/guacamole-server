@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-#ifndef __ASM_GENERIC_POLL_H
-#define __ASM_GENERIC_POLL_H
+#ifndef __POLL_H
+#define __POLL_H
 
 /* These are specified by iBCS2 */
 #define POLLIN		0x0001
@@ -39,4 +39,6 @@ struct pollfd {
 	short revents;
 };
 
-#endif	/* __ASM_GENERIC_POLL_H */
+int poll(struct pollfd *fds, unsigned nfds, int timeout);
+
+#endif	/* __POLL_H */
