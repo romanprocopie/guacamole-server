@@ -666,7 +666,7 @@ static int guac_rdp_handle_connection(guac_client* client) {
     guac_rdp_settings* settings = rdp_client->settings;
 
     /* Init random number generator */
-    srandom(time(NULL));
+    srand(time(NULL));
 
     /* Set up screen recording, if requested */
     if (settings->recording_path != NULL) {
