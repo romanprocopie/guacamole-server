@@ -15,7 +15,7 @@ int setenv(const char *name, const char *value, int overwrite)
         strcpy(nameval, name);
         strcat(nameval,"=");
         strcat(nameval,value);
-        putenv(strcat(name, value));
+        putenv(nameval);
         free(nameval);
     }
 }
