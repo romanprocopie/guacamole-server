@@ -51,6 +51,11 @@ AC_CHECK_LIB([m], [cos],
                             AC_MSG_ERROR("Complex math functions are missing and no libm was found")
                             [#include <math.h>])])
 
+# libws2_32
+#AC_CHECK_LIB([ws2_32], [WSACreateEvent], [WS2_32_LIBS=-lws2_32],
+#             AC_MSG_ERROR("libws2_32 is required for RDP support"))
+
+
 # libpng
 AC_CHECK_LIB([png], [png_write_png], [PNG_LIBS=-lpng],
              AC_MSG_ERROR("libpng is required for writing png messages"))
@@ -96,6 +101,7 @@ AC_CHECK_LIB([cunit], [CU_run_test], [CUNIT_LIBS=-lcunit])
 
 AC_SUBST(DL_LIBS)
 AC_SUBST(MATH_LIBS)
+#AC_SUBST(WS2_32_LIBS)
 AC_SUBST(PNG_LIBS)
 AC_SUBST(JPEG_LIBS)
 AC_SUBST(CAIRO_LIBS)
