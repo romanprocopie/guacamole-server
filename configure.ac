@@ -341,8 +341,9 @@ if test "x$with_winsock" != "xno"
 then
     have_winsock=yes
     AC_CHECK_LIB([wsock32], [main],
-                 [WINSOCK_LIBS="-lwsock32 -lws2_32"]
-                 [AC_DEFINE([ENABLE_WINSOCK],,
+#                 [WINSOCK_LIBS="-lwsock32 -lws2_32"]
+		[WINSOCK_LIBS="-lws2_32"]
+		[AC_DEFINE([ENABLE_WINSOCK],,
                             [Whether Windows Socket API support is enabled])],
                  [have_winsock=no])
 fi
