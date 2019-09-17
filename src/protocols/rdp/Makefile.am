@@ -59,9 +59,8 @@ libguac_client_rdp_la_SOURCES = \
     resolution.c                \
     unicode.c                   \
     user.c \
-    poll.c \
-    setenv.c
-
+    setenv.c \
+    poll.c
 guacai_sources =          \
     audio_input.c         \
     guac_ai/ai_messages.c \
@@ -135,8 +134,8 @@ noinst_HEADERS =                             \
     resolution.h                             \
     unicode.h                                \
     user.h \
-    poll.h \
-    setenv.h
+    setenv.h \
+    poll.h
 
 # Add compatibility layer for WinPR if not available
 if ! ENABLE_WINPR

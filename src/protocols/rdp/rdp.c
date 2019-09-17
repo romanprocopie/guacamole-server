@@ -17,8 +17,11 @@
  * under the License.
  */
 
-#include "config.h"
 
+#define _WIN32_WINNT 0x0601
+
+#include "config.h"
+#include "poll.h"
 #include "audio_input.h"
 #include "client.h"
 #include "common/cursor.h"
@@ -99,12 +102,12 @@
 #endif
 
 #include <errno.h>
-#include <poll.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
 #include <time.h>
+
 
 /**
  * Callback invoked by FreeRDP for data received along a channel. This is the

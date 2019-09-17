@@ -346,6 +346,7 @@ then
 		[AC_DEFINE([ENABLE_WINSOCK],,
                             [Whether Windows Socket API support is enabled])],
                  [have_winsock=no])
+    AC_DEFINE([_WIN32_WINNT], [0x0601],[We are going to target the Windows from version 7 onwards so that winsock2.h includes WSAPoll()])
 fi
 
 AM_CONDITIONAL([ENABLE_WINSOCK], [test "x${have_winsock}" = "xyes"])
